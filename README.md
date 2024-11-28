@@ -1,43 +1,38 @@
-# TASK MANAGEMENT APPLICATION USING DJANGO REST FRAMEWORK AND REACT.JS
+# PROFILE AUTHENTICATION SYSTEM USING DJANGO REST FRAMEWORK AND REACT.JS
 
-🚀 Welcome to the Task Management Application! This powerful tool combines Django REST framework for the backend API with React.js for the frontend user interface.
+🚀 Welcome to the Profile Authentication System! This powerful tool combines Django REST framework for the backend API with React.js and Chakra UI for a beautiful frontend user interface.
 
 ## Screenshots
 
-📷 Here are some screenshots of the Task Management Application:
+📷 Here are some screenshots of the Profile Authentication System:
 
-### Task List Screen
+### Login Screen
+![Login Screen](https://res.cloudinary.com/sakshamtolani/image/upload/v1732821524/iwsekjtly2thrxraza5n.png)
 
-![Task List](https://res.cloudinary.com/sakshamtolani/image/upload/v1696760103/ss1_p1vcgu.png)
+The Login Screen provides a secure entry point where users can authenticate themselves. It features a clean interface with options for both login and registration. Users can also request password resets if they've forgotten their credentials.
 
-The Task List Screen is the primary interface where users can view their tasks and to-do items at a glance. It provides an organized list of all the tasks, allowing users to quickly assess their pending and completed tasks. Users can also filter tasks based on their priority or status, making it easier to focus on the most important and urgent tasks. This screen offers a clean and user-friendly layout that enhances task management efficiency.
+### Profile Dashboard
+![Profile](https://res.cloudinary.com/sakshamtolani/image/upload/v1732821663/rpgluvyis8z4ih2czeoz.png)
 
-With this addition, users will be aware that they can filter tasks on the Task List Screen based on criteria such as priority or status, providing them with greater control and flexibility in managing their tasks.
-
-### Create Task Screen
-
-![Create Task](https://res.cloudinary.com/sakshamtolani/image/upload/v1696760102/ss2_hpeksz.png)
-
-The Create Task Screen is where users can add new tasks or to-do items to their list. It offers a simple and intuitive form that allows users to specify task details such as the task title, description, due date, and any other relevant information. This screen streamlines the process of adding tasks, ensuring that users can effortlessly create and manage their to-do list.
-
-These descriptions should help users understand the purpose and functionality of these screens in your Task Management Application. If you have any specific details or features you'd like to highlight about these screens, please feel free to provide additional information.
+The Profile Dashboard displays user information and provides options to manage their profile. Users can view their details, change their password, and access other account-related features through an intuitive interface.
 
 ## Requirements
 
 ✅ To run this application, ensure you have the following prerequisites:
 
-- Python 3.9.6 🐍
-- Django 4.2.4 🌐
-- Django REST Framework 3.14.0 📦
+- Python 3.x 🐍
+- Django 🌐
+- Django REST Framework 📦
 - React.JS ^18.2.0 ⚛️
 - Chakra UI ^2.8.0 💅
+- SendGrid (for email services) 📧
 
 ## Usage
 
 1. Clone the repository:
 
 ```shell
-git clone https://github.com/SakshamTolani/taskux/
+git clone https://github.com/SakshamTolani/pro-auth/
 ```
 
 2. Create a new branch:
@@ -87,132 +82,80 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+8. Setup Frontend:
+
+```shell
+cd frontend
+```
+9. Install Libraries
+
+```shell
+npm i
+```
+10. Run frontend server
+
+```shell
+npm start
+```
+
 ## API Endpoints
 
 🌐 Explore the following RESTful API endpoints:
 
-- GET `/api/tasks/`: Get all tasks
-- POST `/api/register/`: Signup a user
-- POST `/api/tasks/create/`: Create a new task
-- GET `/api/tasks/:id/`: Get task details by ID
-- DELETE `/api/tasks/delete/:id/`: Delete task by ID
-- PUT `/api/tasks/completed/:id/`: Mark task as completed by ID
-- PUT `/api/tasks/edit/:id/`: Edit task by ID
-- POST `/api/token/`: Obtain JWT access and refresh tokens (used for authorization)
 
-## Swagger Documentation
+## API Endpoints
 
-📖 Use Swagger UI to test and explore the API endpoints with ease. It provides a user-friendly interface for interacting with the API.
+🌐 Explore the following RESTful API endpoints:
 
-- Local Swagger UI: [Swagger UI (Local)](https://127.0.0.1:8000/api/schema/swagger-ui/)
-- Live Deployment Swagger UI: [Swagger UI (Live Deployment)](https://taskux.pythonanywhere.com/api/schema/swagger-ui/)
+- POST `/api/register/`: Register a new user
+- POST `/api/token/`: Obtain JWT tokens
+- GET `/api/profile/`: Get user profile
+- PUT `/api/change-password/`: Change user password
+- POST `/api/reset-password/`: Request password reset
+- PUT `/api/reset-password-confirm/`: Confirm password reset
+- POST `/api/validate-reset-token/`: Validate reset token
+- POST `/api/token/refresh/`: Refresh JWT token
 
-### Authentication for SWAGGER
+## Environment Variables
 
-🔐 Most API endpoints require authentication. Here's how to authorize yourself using the Swagger UI:
+Create a `.env` file in the backend directory with the following variables:
+- SENDGRID_API_KEY=your_sendgrid_api_key
+- FROM_EMAIL=your_sender_email
+- SECRET_KEY=your_django_secret_key
 
-1. Open the Swagger UI either locally or via the live deployment URL mentioned above.
 
-2. Locate the `/api/token/` endpoint in the list of available endpoints.
+## Features
 
-3. Expand the `/api/token/` endpoint by clicking on it.
+✨ Key features of this authentication system:
 
-4. Select the "POST" method for the `/api/token/` endpoint.
+- JWT-based authentication
+- Secure password reset via email
+- Profile management
+- Password change functionality
+- Token validation and refresh
+- Responsive UI with Chakra UI
+- Protected routes
+- User session management
 
-5. In the "Request body" section, enter your username and password in the appropriate fields.
+## Frontend Routes
 
-6. Click on the "Try it out" button to send the POST request.
+🛣️ Available frontend routes:
 
-7. The response will include both the access token and the refresh token.
+- `/login`: Login and registration page
+- `/`: Dashboard (protected)
+- `/profile`: User profile (protected)
+- `/change-password`: Password change (protected)
+- `/reset/:token`: Password reset confirmation
 
-8. In the Swagger UI, click the "Authorize" button available in the top-right corner.
+## Security Features
 
-9. In the "Value" field, enter the access token obtained in the previous step.
+🔒 Built-in security measures:
 
-10. Click the "Authorize" button to authenticate yourself.
-
-Now, you can test the API endpoints by entering the required parameters for each endpoint and clicking "Try it out" to send a request.
-
-## Deployment on PythonAnywhere (with Database Setup)
-
-💼 Ready to deploy the project on PythonAnywhere? Follow these steps:
-
-1. Create a PythonAnywhere account if you don't have one already: [PythonAnywhere Account](https://www.pythonanywhere.com/)
-
-2. Once you're logged in, go to the Dashboard and navigate to the "Consoles" tab.
-
-3. Click on the "Bash" button to open a new Bash console.
-
-4. Clone your task management repository inside the Bash console:
-
-```shell
-git clone https://github.com/SakshamTolani/taskux/
-```
-
-5. Navigate to the `taskux` directory:
-
-```shell
-cd taskux/
-```
-
-6. Create a virtual environment:
-
-```shell
-python -m venv myenv
-```
-
-7. Activate the virtual environment:
-
-```shell
-source myenv/bin/activate
-```
-
-8. Install the project dependencies:
-
-```shell
-pip install -r requirements.txt
-```
-
-9. **Database Setup (Optional Step):**
-   - Create a database on PythonAnywhere. Go to the "Databases" tab in the PythonAnywhere Dashboard and follow the instructions to set up your desired database.
-   - Update the `settings.py` file in the `taskux/backend/taskux` directory with your database connection settings. Modify the `DATABASES` section accordingly.
-
-10. Run the migrations:
-
-```shell
-python manage.py migrate
-```
-
-11. Collect the static files:
-
-```shell
-python manage.py collectstatic --no-input
-```
-
-12. Go back to the PythonAnywhere Dashboard and navigate to the "Web" tab.
-
-13. Click on the "Add a new web app" button.
-
-14. Select the manual configuration option, choose the Python version, and select the virtual environment you created.
-
-15. In the "Code" section, enter the location to your `manage.py` file (e.g., `/home/your_username/taskux/backend/manage.py`).
-
-16. In the "Working Directory" field, enter the location to your project directory (e.g., `/home/your_username/taskux/backend/`).
-
-17. In the "Source Code" field, enter the location to your static files (e.g., `/home/your_username/taskux/backend/static/`).
-
-18. Click on the "Next" button, review the summary, and then click "Create".
-
-19. Once the web app is created, go to the "Virtualenv" tab, click on the "Open web app" button, and the application should be running.
-
-20. You can access the Swagger UI for testing and interacting with the API endpoints by appending `/api/schema/swagger-ui/` to your PythonAnywhere domain URL.
-
-21. Once the web app is created, you can access the Task Management Application by visiting your PythonAnywhere domain URL. The application includes the Swagger UI for testing and interacting with the API endpoints. To access the Swagger UI, simply append `/api/schema/swagger-ui/` to your PythonAnywhere domain URL.
-
-For example, if your PythonAnywhere domain is `https://your_domain.pythonanywhere.com/`, you can access the Swagger UI at `https://your_domain.pythonanywhere.com/api/schema/swagger-ui/`.
-
-From the Swagger UI, you can explore all the available API endpoints, send requests, and test the functionality of the Task Management Application.
-
-Please replace `your_domain` with your actual PythonAnywhere domain wherever mentioned.
+- JWT token authentication
+- Secure password hashing
+- Timed password reset tokens
+- Protected API endpoints
+- CSRF protection
+- Email verification
 
 > Made with ❤️ by Saksham Tolani
