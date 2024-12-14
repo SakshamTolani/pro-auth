@@ -98,10 +98,6 @@ npm i
 npm start
 ```
 
-## API Endpoints
-
-🌐 Explore the following RESTful API endpoints:
-
 
 ## API Endpoints
 
